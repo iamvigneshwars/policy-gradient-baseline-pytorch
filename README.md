@@ -1,8 +1,8 @@
 # policy-gradient-baseline-pytorch
 Vanilla Policy gradient algorithm with baseline. 
 
-## Results
+## Result
+<p align="center">
+  <img src="results/cartpole_resule.jpg"/>
+</p>
 
-|       PG CartPole-v1       | PG Baseline Vs No Baseline |
-| :-------------------------:|:-------------------------: |
-| ![](https://github.com/iamvigneshwars/policy-gradient-baseline-pytorch/blob/main/results/cartpole.gif) |  ![](https://github.com/iamvigneshwars/policy-gradient-baseline-pytorch/blob/main/results/cartpole_result.jpg) |
