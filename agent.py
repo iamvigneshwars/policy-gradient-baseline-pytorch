@@ -46,9 +46,9 @@ class Agent:
             sum_r += r
             res.append(sum_r)
         res = list(reversed(res))
-        # mean_q = np.mean(res)
-        # return [q - mean_q for q in res]
-        return res
+        mean_q = np.mean(res)
+        return [q - mean_q for q in res]
+        # return res
         
     def store_transition(self, state, action, reward):
         self.states.append(state)
