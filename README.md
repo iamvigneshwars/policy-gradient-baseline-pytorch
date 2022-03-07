@@ -3,8 +3,8 @@ AI agent solves CartPole and LunarLander environments in the OpenAi gym. The age
 
 Training : 
   - It uses **monte-carlo method** for learning. (Agent waits till the end of eposides to learn).
-  - During a episode a trajectory state, action, rewards are stored. At the end of an episode the neural network approximates the probablity distribution of actions from the states in trajectory.
-  - The loss is calculated with the sum of producs of the log probablity of action with discounted rewards in the trajectory.
+  - During an episode trajectory of state, action, rewards are stored. At the end of an episode the neural network approximates the probablity distribution of actions for the states in trajectory.
+  - Loss is calculated with the sum of producs of the log probablity of action with discounted rewards in the trajectory.
 
 ## Result
 Agent with baseline performed better than the agent without baseline.
