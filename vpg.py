@@ -15,9 +15,11 @@ class PolicyNet(nn.Module):
         super(PolicyNet, self).__init__()
 
         self.net = nn.Sequential(
-            nn.Linear(n_states, 128),
+            nn.Linear(n_states, 256),
             nn.ReLU(),
-            nn.Linear(128, n_actions)
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, n_actions)
         
         )
       
@@ -44,8 +46,9 @@ class Agent:
             sum_r += r
             res.append(sum_r)
         res = list(reversed(res))
-        mean_q = np.mean(res)
-        return [q - mean_q for q in res]
+        # mean_q = np.mean(res)
+        # return [q - mean_q for q in res]
+        return res
         
     def store_transition(self, state, action, reward):
         self.states.append(state)
@@ -91,6 +94,8 @@ class Agent:
                 log_probs = sampler.log_prob(actions)
                 G = torch.tensor(self.calculate_return(gamma)).to(device)
                 loss = -torch.sum(log_probs * G)
+
+
                 writer.add_scalar("loss", loss.item(), episode)
                 
                 optimizer.zero_grad()
@@ -123,7 +128,7 @@ class Agent:
 
     def play(self, num_episodes):
 
-        self.policy.load_state_dict(torch.load(self.env_name + '.pth'))
+        self.policy.load_state_dict(torch.load(self.env_name + '_vpg.pth'))
         for episode in range(num_episodes):
             print("***Episode", episode + 1,"***")
             rewards = 0
@@ -151,8 +156,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", help = "CartPole-v1 or LunarLander-v2", type = str)
     parser.add_argument("--learn", help = "agent learns to solve the environment", action = 'store_true')
-    parser.add_argument("-g", help = "gamma: discount factor", type = int, default = 0.99 )
-    parser.add_argument("-lr", help = "learning rate", type = int, default = 0.001)
+    parser.add_argument("-g", help = "gamma: discount factor", type = float, default = 0.99 )
+    parser.add_argument("-lr", help = "learning rate", type = float, default = 0.001)
     parser.add_argument("-ep", help = "number of episodes to learn", type = int, default = 1000 )
     parser.add_argument("--play", help = "number of episodes to learn", action = 'store_true' )
     args = parser.parse_args()
@@ -168,6 +173,4 @@ if __name__ == "__main__":
 
     if (args.play):
         agent.play(args.ep)
-
-    # agent.learn(1000, 0.001, 0.99)
 
