@@ -47,10 +47,10 @@ class Agent:
             res.append(sum_r)
         res = list(reversed(res))
         # Baseline : average rewards
-        mean_q = np.mean(res)
-        return [q - mean_q for q in res]
+        # mean_q = np.mean(res)
+        # return [q - mean_q for q in res]
         # Without Baseline
-        # return res
+        return res
         
     def store_transition(self, state, action, reward):
         self.states.append(state)
