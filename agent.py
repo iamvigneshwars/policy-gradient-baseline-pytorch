@@ -46,8 +46,11 @@ class Agent:
             sum_r += r
             res.append(sum_r)
         res = list(reversed(res))
+        # Baseline : average rewards
         mean_q = np.mean(res)
         return [q - mean_q for q in res]
+        # Without Baseline
+        # return res
         
     def store_transition(self, state, action, reward):
         self.states.append(state)
@@ -81,7 +84,7 @@ class Agent:
                     observation = observation_
                     score += reward
                 score_history.append(score)
-                writer.add_scalar("Score",score, episode)
+                writer.add_scalar("Average Score",score, episode)
 
                 # Learn
                 states = torch.tensor(self.states).to(device)
