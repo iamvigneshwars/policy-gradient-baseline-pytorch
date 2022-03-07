@@ -5,4 +5,4 @@ Vanilla Policy gradient algorithm with baseline.
 
 | PG CartPole-v1   | PG Baseline Vs No Baseline |
 | :-------------------------:|:-------------------------: |
-| ![](https://github.com/iamvigneshwars/policy-gradient-baseline-pytorch/results/cartpole_result.jpg) |  ![](https://github.com/iamvigneshwars/policy-gradient-baseline-pytorch/results/cartpole.png) |
+| ![](https://github.com/iamvigneshwars/policy-gradient-baseline-pytorch/blob/main/results/cartpole.gif) |  ![](https://github.com/iamvigneshwars/policy-gradient-baseline-pytorch/blob/main/results/cartpole_result.jpg) |
