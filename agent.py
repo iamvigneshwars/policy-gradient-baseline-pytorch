@@ -48,7 +48,6 @@ class Agent:
         res = list(reversed(res))
         mean_q = np.mean(res)
         return [q - mean_q for q in res]
-        # return res
         
     def store_transition(self, state, action, reward):
         self.states.append(state)
@@ -117,14 +116,12 @@ class Agent:
 
 
                 if (self.env_name == 'CartPole-v1'):
-                    if (avg_score >= 450):
+                    if (avg_score >= 495):
                         break
                     
                 if (self.env_name == 'LunarLander-v2'):
                     if (avg_score >= 200):
                         break
-
-        # torch.save(agent.policy.state_dict(), self.env_name + ".pth")
 
     def play(self, num_episodes):
 
@@ -149,16 +146,14 @@ class Agent:
         self.env.close()
             
 
-
-
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", help = "CartPole-v1 or LunarLander-v2", type = str)
     parser.add_argument("--learn", help = "agent learns to solve the environment", action = 'store_true')
-    parser.add_argument("-g", help = "gamma: discount factor", type = float, default = 0.99 )
-    parser.add_argument("-lr", help = "learning rate", type = float, default = 0.001)
-    parser.add_argument("-ep", help = "number of episodes to learn", type = int, default = 1000 )
+    parser.add_argument("-g" ,"-gamma", help = "gamma: discount factor", type = float, default = 0.99 )
+    parser.add_argument("-lr","-learning_rate",  help = "learning rate", type = float, default = 0.001)
+    parser.add_argument("-ep", "-episode", help = "number of episodes to learn", type = int, default = 1000 )
     parser.add_argument("--play", help = "number of episodes to learn", action = 'store_true' )
     args = parser.parse_args()
 
