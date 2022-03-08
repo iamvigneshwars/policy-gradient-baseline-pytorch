@@ -1,5 +1,5 @@
 # policy-gradient-baseline-pytorch
-AI agent solves CartPole and LunarLander environments in the OpenAi gym. The agent uses average rewards as a baseline.
+AI agent solves CartPole and LunarLander environments in the OpenAi gym using vanilla policy gradient method. The agent uses average rewards as a baseline.
 
 Training : 
   - It uses **monte-carlo method** for learning. (Agent waits till the end of eposides to learn).
